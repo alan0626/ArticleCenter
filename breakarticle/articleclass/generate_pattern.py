@@ -1,4 +1,4 @@
-from breakarticle.model.svs import Platforms, Devices
+#from breakarticle.model.svs import Platforms, Devices
 import random
 import requests
 import datetime

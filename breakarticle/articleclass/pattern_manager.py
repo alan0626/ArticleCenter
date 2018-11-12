@@ -5,7 +5,6 @@ from breakarticle.exceptions import AtomInvalidFileCountError
 from werkzeug.utils import secure_filename
 from breakarticle.definition import PATTERN_TMP_FOLDER
 from breakarticle.helper import pg_add_wrapper
-from breakarticle.model.hips import UploadPattern, DevicePatternStatus
 from breakarticle.model import db
 from breakarticle.atomlogging import request_id
 

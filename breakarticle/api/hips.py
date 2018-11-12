@@ -15,7 +15,7 @@ from breakarticle.forms import AddPatternForm, DeploymentForm
 from breakarticle.articleclass import pattern_manager, s3
 from breakarticle.articleclass.generate_pattern import GeneratePattern
 from breakarticle.articleclass.pattern_manager import TmpZippedPattern
-from breakarticle.model.hips import DevicePatternStatus, UploadPattern
+#from breakarticle.model.hips import DevicePatternStatus, UploadPattern
 
 bp = Blueprint('hips', __name__)
 
