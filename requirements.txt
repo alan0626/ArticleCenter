@@ -1,0 +1,16 @@
+Flask
+requests
+SQLAlchemy
+Flask-SQLAlchemy
+Flask-Script
+alembic
+redis
+celery
+simplejson
+psycopg2-binary
+WTForms
+WTForms-JSON
+botocore
+werkzeug
+boto3
+jwt
