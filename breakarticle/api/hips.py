@@ -12,9 +12,9 @@ from breakarticle.exceptions import AtomInvalidFilenameError
 from breakarticle.helper import api_ok, api_err
 from breakarticle.forms import validate_pattern_file_schema, validate_json_schema
 from breakarticle.forms import AddPatternForm, DeploymentForm
-from breakarticle.kobutaclass import pattern_manager, s3
-from breakarticle.kobutaclass.generate_pattern import GeneratePattern
-from breakarticle.kobutaclass.pattern_manager import TmpZippedPattern
+from breakarticle.articleclass import pattern_manager, s3
+from breakarticle.articleclass.generate_pattern import GeneratePattern
+from breakarticle.articleclass.pattern_manager import TmpZippedPattern
 from breakarticle.model.hips import DevicePatternStatus, UploadPattern
 
 bp = Blueprint('hips', __name__)
