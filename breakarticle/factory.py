@@ -33,17 +33,6 @@ def create_app(config_obj=None):
         from breakarticle.api.hips import bp as hips_bp
         app.register_blueprint(hips_bp, url_prefix='/v0')
 
-        aws_credential = {}
-        if app.config['AWS_ACCESS_KEY_ID'] and len(app.config['AWS_ACCESS_KEY_ID']) > 0:
-            aws_credential['aws_access_key_id'] = app.config['AWS_ACCESS_KEY_ID']
-            aws_credential['aws_secret_access_key'] = app.config['AWS_ACCESS_SECRET']
-        app.s3client = boto3.client('s3', **aws_credential)
-    
-        from breakarticle.api.patterns import bp as patterns_bp
-        from breakarticle.api.devices import bp as devices_bp
-        app.register_blueprint(patterns_bp, url_prefix='/v0')
-        app.register_blueprint(devices_bp, url_prefix='/v0')
-
     return app
 
 
