@@ -9,7 +9,7 @@ app = Celery('tasks', broker=broker)
 celery = create_celery_app()
 
 
-# @celery.task(ignore_result=True)
+# @celery.task()
 @celery.task()
 def test_delay(dpi_json):
     logging.info('Alan_test: test_delay: {}'.format(dpi_json))
