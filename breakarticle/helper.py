@@ -58,8 +58,9 @@ def api_err(name='INTERNAL_ERROR', data=None, message=None, log_level='INFO'):
     return jsonify(ret_obj)
 
 
-def api_ok(log_level='INFO', **kwargs):
-    return api_err(name='OK', data=kwargs, log_level=log_level)
+def api_ok(ret_str, **kwargs):
+    log_level = 'INFO'
+    return api_err(name=ret_str, data=kwargs, log_level=log_level)
 
 
 def api_pattern_exist(log_level='INFO', **kwargs):

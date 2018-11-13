@@ -18,13 +18,15 @@ AUTH_REDIS_DB_NUMBER = 0
 CELERY_DISABLED = True
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/7'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/7'
 CELERY_IGNORE_RESULT = True
 CELERY_TIMEZONE = 'utc'
 CELERY_ENABLE_UTC = True
 CELERYD_HIJACK_ROOT_LOGGER = False
 CELERY_ACCEPT_CONTENT = ['json']
-CELERY_DEFAULT_QUEUE = 'atom:tarsier'
+CELERY_ROUTES = {
+   'breakarticle.tasks.test_queue': {'queue': 'test_queue'},
+}
 CELERYBEAT_SCHEDULE = {
     'sysinfo-scheduler': {
         'task': 'atomtarsier.tasks.start_sysinfo_gen_report_scheduler',

@@ -38,13 +38,17 @@ def create_app(config_obj=None):
 
 def create_celery_app(app=None):
     app = app or create_app()
+    import logging
+    logging.info('create_celery_app: {}'.format("create_celery_app"))
+    logging.info('app.config[CELERY_DISABLED]_up: {}'.format(app.config['CELERY_DISABLED']))
     if app.config['CELERY_DISABLED']:
+        logging.info('app.config[CELERY_DISABLED]: {}'.format(app.config['CELERY_DISABLED']))
         return Celery(__name__)
 
     celery = Celery(__name__, broker=app.config['CELERY_BROKER_URL'])
     celery.conf.update(app.config)
     TaskBase = celery.Task
-
+    logging.info('app.config[CELERY_BROKER_URL]: {}'.format(app.config['CELERY_BROKER_URL']))
     class ContextTask(TaskBase):
         abstract = True
 

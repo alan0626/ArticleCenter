@@ -94,10 +94,24 @@ def deploy_pattern(form):
 
 @bp.route('/hips/dpi/callback2', methods=['POST', 'OPTIONS'])
 def dpi_callback2():
-    # request_status: 'pending', 'requested', 'done', 'failed'
     dpi_json = request.get_data()
-    # j_data =  json.loads(dpi_json)
-    logging.info("dpi : {}".format(dpi_json))
+    logging.info("dpi2 : {}".format(dpi_json))
+    from breakarticle.tasks import test_delay
+    result = test_delay.delay(dpi_json)
+    logging.info("result.get() : {}".format(result.get()))
+    logging.info("result.traceback : {}".format(result.traceback))
+    return api_ok("OK")
+
+
+@bp.route('/hips/dpi/callback3', methods=['POST', 'OPTIONS'])
+def dpi_callback3():
+    dpi_json = request.get_data()
+    logging.info("dpi3 : {}".format(dpi_json))
+    # How to start worker: /usr/bin/python3 /usr/local/bin/celery -A breakarticle.tasks worker -Q test_queue -l info &
+    from breakarticle.tasks import test_queue
+    result = test_queue.delay(dpi_json)
+    logging.info("result.get() : {}".format(result.get()))
+    logging.info("result.traceback : {}".format(result.traceback))
     return api_ok("OK")
 
 

@@ -16,7 +16,7 @@ class UrlInfo(db.Model):
 class TaskInfo(db.Model):
     __tablename__ = 'task_info'
     id = db.Column(db.Integer, primary_key=True)
-    url_hash = db.Column(db.String(64), db.ForeignKey('url_info.url_hash'), nullable=False)
+    url_hash = db.Column(db.String(64), db.ForeignKey('url_info.url_hash'), nullable=False, index=True)
     notify_status = db.Column(db.String(64), nullable=True)
     priority = db.Column(db.Integer, nullable=True)
     retry = db.Column(db.Integer, nullable=True)
@@ -28,7 +28,7 @@ class TaskInfo(db.Model):
 class ServiceInfo(db.Model):
     __tablename__ = 'service_info'
     id = db.Column(db.Integer, primary_key=True)
-    url_hash = db.Column(db.String(64), db.ForeignKey('url_info.url_hash'), nullable=False)
+    url_hash = db.Column(db.String(64), db.ForeignKey('url_info.url_hash'), nullable=False, index=True)
     status = db.Column(db.Enum('syncing', 'failed', 'finished', name='sync_status'), nullable=True)
     service = db.Column(db.String(64), nullable=False)
     service_status = db.Column(db.String(64), nullable=True)
